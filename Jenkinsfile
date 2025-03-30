@@ -10,12 +10,6 @@ pipeline{
         stage("clone code"){
             steps{
                 git  branch:"${GIT_BRANCH}", url:"${GIT_REPO}"
-
-            }
-        }
-        stage("install dependancies"){
-            steps{
-                sh 'npm install'
             }
         }
         stage("test code"){
@@ -25,7 +19,7 @@ pipeline{
         }
         stage("build app"){
             steps{
-                sh 'npm run build'
+                sh 'npm install'
             }
         }
         stage("deploy app to render"){
