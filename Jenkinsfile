@@ -5,7 +5,7 @@ pipeline{
         GIT_BRANCH='master'
         PATH = "/usr/local/bin:/opt/homebrew/bin:$PATH"
         RENDER_WEBHOOK="https://api.render.com/deploy/srv-cvk49d9r0fns739mvfe0?key=rPzbeMIChOQ"
-        RENDER_SITE:'https://gallery-rn2j.onrender.com'
+        RENDER_SITE='https://gallery-rn2j.onrender.com'
         SLACK_WEBHOOK='https://hooks.slack.com/services/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'
     }
     stages{
