@@ -7,7 +7,7 @@ pipeline{
         RENDER_WEBHOOK="https://api.render.com/deploy/srv-cvk49d9r0fns739mvfe0?key=rPzbeMIChOQ"
         RENDER_SITE='https://gallery-rn2j.onrender.com'
         SLACK_WEBHOOK=credentials('614a3b05-b410-40f4-9ee5-e3dc6fe55d0c')
-        HEROKU_URL='https://gallery-mark-ip-1-2f6c401795a5.herokuapp.com/'
+        HEROKU_URL='https://gallery-mark-ip-1-2f6c401795a5.herokuapp.com'
         HEROKU_APP_NAME='gallery-mark-ip-1'
         HEROKU_API_KEY=credentials("31c31555-3463-46f7-8a4c-b3b32f75696a")
     }
@@ -68,7 +68,7 @@ pipeline{
                         // Prepare Slack message
                         def slackMessage = """
                         {
-                           "text":"*Render deployed ${env.REPO_NAME} successfully.*\n\nBranch:${GIT_BRANCH}\nRendor DeploymentId:${env.DEPLOYMENT_ID}\nDeployment URL:${env.RENDER_SITE}\nHeroku URL:${env.HEROKU_URL}\n"
+                           "text":"*Deployed ${env.REPO_NAME} to both Heroku and Rendor successfully.*\n\nBranch:${GIT_BRANCH}\nRendor DeploymentId:${env.DEPLOYMENT_ID}\nRendor URL:${env.RENDER_SITE}\nHeroku URL:${env.HEROKU_URL}\n"
                         }
                         """.trim()
                         // Send message to Slack
