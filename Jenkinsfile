@@ -5,7 +5,6 @@ pipeline{
         GIT_BRANCH='ft-jenkins-pipeline'
         PATH = "/usr/local/bin:/opt/homebrew/bin:$PATH"
         RENDER_WEBHOOK="https://api.render.com/deploy/srv-cvk49d9r0fns739mvfe0?key=rPzbeMIChOQ"
-        SLACK_WEBHOOK="https://hooks.slack.com/services/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"
     }
     stages{
         stage("clone code"){
