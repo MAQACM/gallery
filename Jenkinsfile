@@ -12,6 +12,11 @@ pipeline{
                 git  branch:"${GIT_BRANCH}", url:"${GIT_REPO}"
             }
         }
+        stage('Install Dependencies') {
+                    steps {
+                        sh 'npm install'
+                    }
+                }
         stage("test code"){
             steps{
                 sh "npm test"
