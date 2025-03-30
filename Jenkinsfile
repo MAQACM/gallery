@@ -6,7 +6,7 @@ pipeline{
         PATH = "/usr/local/bin:/opt/homebrew/bin:$PATH"
         RENDER_WEBHOOK="https://api.render.com/deploy/srv-cvk49d9r0fns739mvfe0?key=rPzbeMIChOQ"
         RENDER_SITE='https://gallery-rn2j.onrender.com'
-        SLACK_WEBHOOK='https://hooks.slack.com/services/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'
+        SLACK_WEBHOOK=credentials('614a3b05-b410-40f4-9ee5-e3dc6fe55d0c')
     }
     stages{
         stage("clone code"){
