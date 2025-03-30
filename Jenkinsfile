@@ -10,6 +10,7 @@ pipeline{
         HEROKU_URL='https://gallery-mark-ip-1-2f6c401795a5.herokuapp.com'
         HEROKU_APP_NAME='gallery-mark-ip-1'
         HEROKU_API_KEY=credentials("31c31555-3463-46f7-8a4c-b3b32f75696a")
+        REPO_OWNER="mark.kasimu@student.moringaschool.com"
     }
     stages{
         stage("clone code"){
@@ -78,18 +79,19 @@ pipeline{
                     }
             }
             failure {
-                 script{
-                        // Prepare Slack message
-                        def slackMessage = """
-                        {
-                            "text": "*Deployemnt for ${env.REPO_NAME} failed kindy check jenkins console for detailed logs.*\nBranch:${GIT_BRANCH}\n"
-                        }
-                        """.trim()
-                        // Send message to Slack
-                        sh """
-                            curl -X POST -H 'Content-type: application/json' --data '${slackMessage}' ${SLACK_WEBHOOK}
-                        """
-                    }
+            //send email to owner incase pipeline fails
+                 script {
+                                 emailext subject:"JENKINS PIPELINE FAILURE!!!:${REPO_NAME}",
+                                          body: """
+                                          The Jenkins build for ${env.JOB_NAME} has failed.
+                                          \nBranch: ${env.GIT_BRANCH}
+                                          \nBuild URL: ${env.BUILD_URL} \n
+
+                                          Please check the logs for more details.
+                                          """,
+                                          to: "$REPO_OWNER",
+                                          from: "jenkins@example.com"
+                             }
             }
         }
 }
