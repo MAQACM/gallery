@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         GIT_REPO='https://github.com/MAQACM/gallery.git'
-        GIT_BRANCH='ft-jenkins-pipeline'
+        GIT_BRANCH='master'
         PATH = "/usr/local/bin:/opt/homebrew/bin:$PATH"
         RENDER_WEBHOOK="https://api.render.com/deploy/srv-cvk49d9r0fns739mvfe0?key=rPzbeMIChOQ"
     }
