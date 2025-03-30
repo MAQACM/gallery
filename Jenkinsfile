@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         GIT_REPO='https://github.com/MAQACM/gallery.git'
-        GIT_BRANCH='ft-jenkins-pipeline'
+        GIT_BRANCH='master'
         PATH = "/usr/local/bin:/opt/homebrew/bin:$PATH"
         RENDER_WEBHOOK="https://api.render.com/deploy/srv-cvk49d9r0fns739mvfe0?key=rPzbeMIChOQ"
     }
@@ -10,26 +10,16 @@ pipeline{
         stage("clone code"){
             steps{
                 git  branch:"${GIT_BRANCH}", url:"${GIT_REPO}"
-
-            }
-        }
-        stage("install dependancies"){
-            steps{
-                sh 'npm install'
             }
         }
         stage("test code"){
             steps{
-                //if tests fails mark stage as failed and continue for this use case
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                    sh "npm test"
-                }
-
+                sh "npm test"
             }
         }
         stage("build app"){
             steps{
-                sh 'npm run'
+                sh 'npm install'
             }
         }
         stage("deploy app to render"){
