@@ -47,8 +47,8 @@ pipeline{
                     steps {
                         script {
                             sh """
-                                heroku git:remote -a ${HEROKU_APP_NAME}
-                                git push https://heroku:${HEROKU_API_KEY}@git.heroku.com/${HEROKU_APP_NAME}.git master
+                                heroku git:remote -a $HEROKU_APP_NAME
+                                git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
                             """
                         }
                     }
